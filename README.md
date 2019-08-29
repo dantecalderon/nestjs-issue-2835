@@ -6,7 +6,7 @@
 [travis-url]: https://travis-ci.org/nestjs/nest
 [linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
 [linux-url]: https://travis-ci.org/nestjs/nest
-  
+
   <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
@@ -28,7 +28,46 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+## Issue reproduction:
+
+Steps:
+* Install
+```
+yarn
+```
+
+* Run view the response error:
+```
+yarn test:e2e
+```
+
+* Should be something like this:
+```
+gitpod /workspace/nestjs-issue-2835 $ yarn test:e2e
+yarn run v1.17.3
+$ jest --config ./test/jest-e2e.json
+  ●  process.exit called with "1"
+
+      11 |         }).compile();
+      12 |
+    > 13 |         app = moduleFixture.createNestApplication();
+         |                             ^
+      14 |         await app.init();
+      15 |     });
+      16 |
+
+      at Object.loadPackage (../node_modules/@nestjs/common/utils/load-package.util.js:12:17)
+      at TestingModule.createHttpAdapter (../node_modules/@nestjs/testing/testing-module.js:24:56)
+      at TestingModule.createNestApplication (../node_modules/@nestjs/testing/testing-module.js:12:43)
+      at Object.beforeEach (app.e2e-spec.ts:13:29)
+
+ RUNS  test/app.e2e-spec.ts
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+gitpod /workspace/nestjs-issue-2835 $
+```
+
+## Installations
 
 ```bash
 $ npm install
